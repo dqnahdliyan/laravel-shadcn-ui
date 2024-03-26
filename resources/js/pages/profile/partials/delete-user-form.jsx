@@ -1,6 +1,6 @@
-import {useForm} from "@inertiajs/react";
-import {Button} from "@/components/button";
-import {Input, Label} from "@/components/input";
+import { useForm } from "@inertiajs/react";
+import { Button } from "@/components/button";
+import { Input, Label } from "@/components/input";
 import {
     Dialog,
     DialogClose,
@@ -11,7 +11,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/dialog";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/card";
 
 export default function DeleteUserForm() {
     const {

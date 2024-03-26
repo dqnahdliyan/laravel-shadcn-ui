@@ -1,12 +1,12 @@
-import {Link, useForm, usePage} from "@inertiajs/react";
-import {Error, Input, Label, Textarea} from "@/components/input";
-import {Button} from "@/components/button";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/card";
-import {toast} from "sonner";
+import { Link, useForm, usePage } from "@inertiajs/react";
+import { Error, Input, Label, Textarea } from "@/components/input";
+import { Button } from "@/components/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/card";
+import { toast } from "sonner";
 
-export default function UpdateProfileInformationForm({mustVerifyEmail, status}) {
+export default function UpdateProfileInformationForm({ mustVerifyEmail, status }) {
     const user = usePage().props.auth.user;
-    const {data, setData, patch, errors, processing} = useForm({
+    const { data, setData, patch, errors, processing } = useForm({
         name: user.name,
         email: user.email,
         username: user.username,
@@ -15,7 +15,7 @@ export default function UpdateProfileInformationForm({mustVerifyEmail, status}) 
 
     const submit = (e) => {
         e.preventDefault();
-        patch(route("profile.update"), {
+        patch(route("profile.update", user.id), {
             onSuccess: () => {
                 toast.success("Profile updated.");
             },
@@ -30,7 +30,7 @@ export default function UpdateProfileInformationForm({mustVerifyEmail, status}) 
             </CardHeader>
 
             <form onSubmit={submit}>
-                <CardContent className="grid gap-3 max-w-xl">
+                <CardContent className="grid max-w-xl gap-3">
                     <div className="space-y-2">
                         <Label htmlFor="name">Name</Label>
                         <Input
@@ -41,7 +41,7 @@ export default function UpdateProfileInformationForm({mustVerifyEmail, status}) 
                             autoFocus
                             autoComplete="name"
                         />
-                        <Error message={errors.name}/>
+                        <Error message={errors.name} />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
@@ -53,7 +53,7 @@ export default function UpdateProfileInformationForm({mustVerifyEmail, status}) 
                             required
                             autoComplete="username"
                         />
-                        <Error message={errors.email}/>
+                        <Error message={errors.email} />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="username">Username</Label>
@@ -65,7 +65,7 @@ export default function UpdateProfileInformationForm({mustVerifyEmail, status}) 
                             required
                             autoComplete="username"
                         />
-                        <Error message={errors.username}/>
+                        <Error message={errors.username} />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="about">About</Label>
@@ -76,7 +76,7 @@ export default function UpdateProfileInformationForm({mustVerifyEmail, status}) 
                             onChange={(e) => setData("about", e.target.value)}
                             autoComplete="about"
                         />
-                        <Error message={errors.about}/>
+                        <Error message={errors.about} />
                     </div>
 
                     {mustVerifyEmail && user.email_verified_at === null && (

@@ -4,30 +4,29 @@ import UpdatePhotoForm from "@/pages/profile/partials/update-photo-form.jsx";
 import UpdatePasswordForm from "@/pages/profile/partials/update-password-form.jsx";
 import DeleteUserForm from "@/pages/profile/partials/delete-user-form.jsx";
 
-export default function ProfileEdit({mustVerifyEmail, status}) {
+export default function ProfileEdit({ mustVerifyEmail, status }) {
     return (
         <div className="mx-auto space-y-6">
             <div>
                 <UpdateProfileInformationForm
                     mustVerifyEmail={mustVerifyEmail}
                     status={status}
-
                 />
             </div>
 
             <div>
-                <UpdatePhotoForm/>
+                <UpdatePhotoForm />
             </div>
 
             <div>
-                <UpdatePasswordForm/>
+                <UpdatePasswordForm />
             </div>
 
             <div>
-                <DeleteUserForm/>
+                <DeleteUserForm />
             </div>
         </div>
     );
 }
 
-ProfileEdit.layout = (page) => <AppLayout title="Profile" children={page}/>
+ProfileEdit.layout = (page) => <AppLayout title="Profile" children={page} />

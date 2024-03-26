@@ -1,17 +1,17 @@
-import {useRef, useState} from "react";
-import {useForm, usePage} from "@inertiajs/react";
-import {Button} from "@/components/button";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/avatar";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/card";
-import {LoaderCircleIcon, UserIcon} from "lucide-react";
-import {toast} from "sonner";
-import {Error} from "@/components/input.jsx";
+import { useRef, useState } from "react";
+import { useForm, usePage } from "@inertiajs/react";
+import { Button } from "@/components/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/card";
+import { LoaderCircleIcon, UserIcon } from "lucide-react";
+import { toast } from "sonner";
+import { Error } from "@/components/input.jsx";
 
 export default function UpdatePhotoForm() {
     const user = usePage().props.auth.user;
     const fileInput = useRef();
 
-    const {setData, post, errors, processing} = useForm({
+    const { setData, post, errors, processing } = useForm({
         photo: user.photo || "",
     });
 
@@ -59,18 +59,18 @@ export default function UpdatePhotoForm() {
                         className="w-16 h-16 border-2"
                         onClick={() => fileInput.current.click()}
                     >
-                        <AvatarImage src={photo}/>
+                        <AvatarImage src={photo} />
                         <AvatarFallback>
-                            <UserIcon className="w-12 h-12"/>
+                            <UserIcon className="w-12 h-12" />
                         </AvatarFallback>
                     </Avatar>
-                    <Error message={errors.photo}/>
+                    <Error message={errors.photo} />
                 </CardContent>
 
                 <CardFooter>
                     <Button type="submit" disabled={processing}>
                         {processing && (
-                            <LoaderCircleIcon className="w-4 h-4 mr-2 animate-spin"/>
+                            <LoaderCircleIcon className="w-4 h-4 mr-2 animate-spin" />
                         )}
                         Save
                     </Button>

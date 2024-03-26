@@ -19,5 +19,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        collect(['Blog', 'Tutorial', 'Project'])->each(function ($cat) {
+            \App\Models\Category::create([
+                'name' => $cat,
+                'slug' => str($cat)->slug(),
+            ]);
+        });
+
+        collect(['HTML', 'CSS', 'Javascript', 'PHP', 'Laravel', 'Vue', 'React', 'Tailwind', 'Bootstrap', 'Next JS', 'Nuxt JS'])->each(function ($tag) {
+            \App\Models\Tag::create([
+                'name' => $tag,
+                'slug' => str($tag)->slug(),
+            ]);
+        });
+
+        \App\Models\Article::factory(50)->create();
     }
 }
